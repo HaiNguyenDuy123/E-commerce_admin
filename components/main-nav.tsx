@@ -18,8 +18,7 @@ export function MainNav({
       label: 'Settings',
       active: pathname === `/${params.storeId}/settings`,
     },
-  ];
-
+  ]
 
   return (
     <nav

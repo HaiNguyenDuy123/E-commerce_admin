@@ -13,11 +13,11 @@ export async function POST(
     const { name } = body;
 
     if (!userId) {
-      return new NextResponse("Truy cập trái phép!", { status: 403 });
+      return new NextResponse("Unauthorized", { status: 403 });
     }
 
     if (!name) {
-      return new NextResponse("Tên là bắt buộc.", { status: 400 });
+      return new NextResponse("Name is required", { status: 400 });
     }
 
     const store = await prismadb.store.create({

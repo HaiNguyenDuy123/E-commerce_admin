@@ -1,5 +1,6 @@
 "use client";
 
+import { AlertModal } from "@/components/modals/alert-modal";
 import { Button } from "@/components/ui/button";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { Heading } from "@/components/ui/heading";
@@ -45,16 +46,37 @@ export const SettingsForm: React.FC<SettingsFormProps> = ({
       setLoading(true);
       await axios.patch(`/api/stores/${params.storeId}`, data);
       router.refresh();
-      toast.success("Store updated.");
+      toast.success("Cửa hàng đã thêm thành công.");
     } catch (error) {
-      toast.error("Something went wrong.");
+      toast.error("Có vấn đề đã xảy ra!");
     } finally {
       setLoading(false);
     }
   };
 
+  const onDelete = async () => {
+    try {
+      setLoading(true);
+      await axios.delete(`/api/stores/${params.storeId}`);
+      router.refresh();
+      router.push("/")
+      toast.success("Cửa hàng đã xóa thành công.");
+    } catch (error) {
+      toast.error("Đảm bảo bạn đã xóa tất cả sản phẩm và danh mục trước!");
+    } finally {
+      setLoading(false);
+      setOpen(false);
+    }
+  }
+
   return (
     <>
+      <AlertModal 
+        isOpen={open}
+        onClose={() => setOpen(false)}
+        onConfirm= {onDelete}
+        loading=  {loading}
+      />
       <div className="flex items-center justify-between">
         <Heading
           title="Settings"
