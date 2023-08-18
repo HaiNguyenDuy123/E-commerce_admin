@@ -1,7 +1,6 @@
 import { redirect } from 'next/navigation';
 import { auth } from '@clerk/nextjs';
 
-import Navbar from '@/components/navbar'
 import prismadb from '@/lib/prismadb';
 
 export default async function DashboardLayout({
@@ -20,7 +19,7 @@ export default async function DashboardLayout({
   const store = await prismadb.store.findFirst({ 
     where: {
       id: params.storeId,
-      userId,
+      userId
     }
    });
 
@@ -30,7 +29,7 @@ export default async function DashboardLayout({
 
   return (
     <>
-      <Navbar />
+      <div>This will be Navbav</div>
       {children}
     </>
   );
