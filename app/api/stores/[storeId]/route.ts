@@ -9,7 +9,7 @@ export async function PATCH(
   { params }: { params: { storeId: string } }
 ) {
   try {
-    const { userId } = auth(); // lấy thong tin từ  người dùng đăng nhập
+    const { userId } = auth();
     const body = await req.json();
 
     const { name } = body;
