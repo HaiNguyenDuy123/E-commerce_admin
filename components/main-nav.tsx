@@ -15,42 +15,42 @@ export function MainNav({
   const routes = [
     {
       href: `/${params.storeId}`,
-      label: 'Overview',
+      label: 'Tổng quan',
       active: pathname === `/${params.storeId}`,
     },
     {
       href: `/${params.storeId}/billboards`,
-      label: 'Billboards',
+      label: 'Biển quảng cáo',
       active: pathname === `/${params.storeId}/billboards`,
     },
     {
       href: `/${params.storeId}/categories`,
-      label: 'Categories',
+      label: 'Danh mục',
       active: pathname === `/${params.storeId}/categories`,
     },
     {
       href: `/${params.storeId}/sizes`,
-      label: 'Sizes',
+      label: 'Kích thước',
       active: pathname === `/${params.storeId}/sizes`,
     },
     {
       href: `/${params.storeId}/colors`,
-      label: 'Colors',
+      label: 'Màu sắc',
       active: pathname === `/${params.storeId}/colors`,
     },
     {
       href: `/${params.storeId}/products`,
-      label: 'Products',
+      label: 'Sản phẩm',
       active: pathname === `/${params.storeId}/products`,
     },
     {
       href: `/${params.storeId}/orders`,
-      label: 'Orders',
+      label: 'Đặt hàng',
       active: pathname === `/${params.storeId}/orders`,
     },
     {
       href: `/${params.storeId}/settings`,
-      label: 'Settings',
+      label: 'Cài đặt',
       active: pathname === `/${params.storeId}/settings`,
     },
   ]
@@ -70,7 +70,7 @@ export function MainNav({
           )}
         >
           {route.label}
-      </Link>
+        </Link>
       ))}
     </nav>
   )
