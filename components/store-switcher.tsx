@@ -108,7 +108,10 @@ export default function StoreSwitcher({ className, items = [] }: StoreSwitcherPr
                   storeModal.onOpen()
                 }}
               >
-                <PlusCircle className="mr-2 h-5 w-5" />
+                  <Avatar>
+                    <AvatarImage src="https://cdn-icons-png.flaticon.com/128/983/983952.png" alt="@shadcn" />
+                    <AvatarFallback>CN</AvatarFallback>
+                  </Avatar>
                 Tạo cửa hàng
               </CommandItem>
             </CommandGroup>
