@@ -24,14 +24,14 @@ export const ProductsClient: React.FC<ProductsClientProps> = ({
   return (
     <> 
       <div className="flex items-center justify-between">
-        <Heading title={`Products (${data.length})`} description="Manage products for your store" />
+        <Heading title={`Sản phẩm (${data.length})`} description="Quản lý sản phẩm cho cửa hàng của bạn" />
         <Button onClick={() => router.push(`/${params.storeId}/products/new`)}>
-          <Plus className="mr-2 h-4 w-4" /> Add New
+          <Plus className="mr-2 h-4 w-4" /> Thêm mới
         </Button>
       </div>
       <Separator />
       <DataTable searchKey="name" columns={columns} data={data} />
-      <Heading title="API" description="API Calls for Products" />
+      <Heading title="API" description="Lệnh gọi API cho sản phẩm" />
       <Separator />
       <ApiList entityName="products" entityIdName="productId" />
     </>

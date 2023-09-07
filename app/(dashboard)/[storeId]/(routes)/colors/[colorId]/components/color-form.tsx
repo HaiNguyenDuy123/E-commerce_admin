@@ -27,7 +27,7 @@ import { AlertModal } from "@/components/modals/alert-modal"
 const formSchema = z.object({
   name: z.string().min(2),
   value: z.string().min(4).max(9).regex(/^#/, {
-    message: 'String must be a valid hex code'
+    message: 'Chuỗi phải là mã hex hợp lệ'
   }),
 });
 
@@ -46,10 +46,10 @@ export const ColorForm: React.FC<ColorFormProps> = ({
   const [open, setOpen] = useState(false);
   const [loading, setLoading] = useState(false);
 
-  const title = initialData ? 'Edit color' : 'Create color';
-  const description = initialData ? 'Edit a color.' : 'Add a new color';
-  const toastMessage = initialData ? 'Color updated.' : 'Color created.';
-  const action = initialData ? 'Save changes' : 'Create';
+  const title = initialData ? 'Sửa màu' : 'Tạo màu';
+  const description = initialData ? 'Chỉnh sửa màu.' : 'Thêm màu mới';
+  const toastMessage = initialData ? 'Cập nhập màu.' : 'Đã tạo màu.';
+  const action = initialData ? 'Lưu' : 'Tạo';
 
   const form = useForm<ColorFormValues>({
     resolver: zodResolver(formSchema),
@@ -70,7 +70,7 @@ export const ColorForm: React.FC<ColorFormProps> = ({
       router.push(`/${params.storeId}/colors`);
       toast.success(toastMessage);
     } catch (error: any) {
-      toast.error('Something went wrong.');
+      toast.error('Đã xảy ra lỗi.');
     } finally {
       setLoading(false);
     }
@@ -82,9 +82,9 @@ export const ColorForm: React.FC<ColorFormProps> = ({
       await axios.delete(`/api/${params.storeId}/colors/${params.colorId}`);
       router.refresh();
       router.push(`/${params.storeId}/colors`);
-      toast.success('Color deleted.');
+      toast.success('Đã xóa màu.');
     } catch (error: any) {
-      toast.error('Make sure you removed all products using this color first.');
+      toast.error('Hãy đảm bảo rằng bạn đã loại bỏ tất cả các sản phẩm sử dụng màu này trước tiên.');
     } finally {
       setLoading(false);
       setOpen(false);
@@ -121,9 +121,9 @@ export const ColorForm: React.FC<ColorFormProps> = ({
               name="name"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Name</FormLabel>
+                  <FormLabel>Tên</FormLabel>
                   <FormControl>
-                    <Input disabled={loading} placeholder="Color name" {...field} />
+                    <Input disabled={loading} placeholder="Tên màu" {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -134,7 +134,7 @@ export const ColorForm: React.FC<ColorFormProps> = ({
               name="value"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Value</FormLabel>
+                  <FormLabel>Mã HEX của màu</FormLabel>
                   <FormControl>
                     <div className="flex items-center gap-x-4">
                       <Input disabled={loading} placeholder="Color value" {...field} />

@@ -13,8 +13,8 @@ interface ApiAlertProps {
 
 
 const textMap: Record<ApiAlertProps["variant"], string> = {
-  public: 'Public',
-  admin: 'Admin'
+  public: 'Công khai',
+  admin: 'Quản trị viên'
 };
 
 const variantMap: Record<ApiAlertProps["variant"], BadgeProps["variant"]> = {
@@ -48,10 +48,12 @@ export const ApiAlert: React.FC<ApiAlertProps> = ({
           <div className="flex items-center">
             <a href={description} target="_blank">
               <Button variant="outline" size="sm">
-                Go to Website
+                Đi tới Website
               </Button>
             </a>
-          
+
+
+
           <Button variant="outline" size="sm" onClick={() => onCopy(description)}>
             <Copy className="h-4 w-4" />
           </Button>

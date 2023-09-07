@@ -62,10 +62,10 @@ export const ProductForm: React.FC<ProductFormProps> = ({
   const [open, setOpen] = useState(false);
   const [loading, setLoading] = useState(false);
 
-  const title = initialData ? 'Edit product' : 'Create product';
-  const description = initialData ? 'Edit a product.' : 'Add a new product';
-  const toastMessage = initialData ? 'Product updated.' : 'Product created.';
-  const action = initialData ? 'Save changes' : 'Create';
+  const title = initialData ? 'Chỉnh sửa sản phẩm' : 'Tạo sản phẩm';
+  const description = initialData ? 'Chỉnh sửa sản phẩm.' : 'Thêm sản phẩm.';
+  const toastMessage = initialData ? 'Cập nhập sản phẩm.' : 'Tạo sản phẩm';
+  const action = initialData ? 'Lưu' : 'Tạo';
 
   const defaultValues = initialData ? {
     ...initialData,
@@ -98,7 +98,7 @@ export const ProductForm: React.FC<ProductFormProps> = ({
       router.push(`/${params.storeId}/products`);
       toast.success(toastMessage);
     } catch (error: any) {
-      toast.error('Something went wrong.');
+      toast.error('Đã xảy ra lỗi.');
     } finally {
       setLoading(false);
     }
@@ -110,9 +110,9 @@ export const ProductForm: React.FC<ProductFormProps> = ({
       await axios.delete(`/api/${params.storeId}/products/${params.productId}`);
       router.refresh();
       router.push(`/${params.storeId}/products`);
-      toast.success('Product deleted.');
+      toast.success('Đã xóa sản phẩm');
     } catch (error: any) {
-      toast.error('Something went wrong.');
+      toast.error('Đã xảy ra lỗi.');
     } finally {
       setLoading(false);
       setOpen(false);
@@ -148,7 +148,7 @@ export const ProductForm: React.FC<ProductFormProps> = ({
             name="images"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Images</FormLabel>
+                <FormLabel>Ảnh</FormLabel>
                 <FormControl>
                   <ImageUpload 
                     value={field.value.map((image) => image.url)} 
@@ -167,9 +167,9 @@ export const ProductForm: React.FC<ProductFormProps> = ({
               name="name"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Name</FormLabel>
+                  <FormLabel>Tên</FormLabel>
                   <FormControl>
-                    <Input disabled={loading} placeholder="Product name" {...field} />
+                    <Input disabled={loading} placeholder="Tên sản phẩm" {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -180,9 +180,9 @@ export const ProductForm: React.FC<ProductFormProps> = ({
               name="price"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Price</FormLabel>
+                  <FormLabel>Giá</FormLabel>
                   <FormControl>
-                    <Input type="number" disabled={loading} placeholder="9.99" {...field} />
+                    <Input type="number" disabled={loading} placeholder="20.000VND" {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -193,11 +193,11 @@ export const ProductForm: React.FC<ProductFormProps> = ({
               name="categoryId"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Category</FormLabel>
+                  <FormLabel>Danh mục</FormLabel>
                   <Select disabled={loading} onValueChange={field.onChange} value={field.value} defaultValue={field.value}>
                     <FormControl>
                       <SelectTrigger>
-                        <SelectValue defaultValue={field.value} placeholder="Select a category" />
+                        <SelectValue defaultValue={field.value} placeholder="Chọn một danh mục"/>
                       </SelectTrigger>
                     </FormControl>
                     <SelectContent>
@@ -215,11 +215,11 @@ export const ProductForm: React.FC<ProductFormProps> = ({
               name="sizeId"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Size</FormLabel>
+                  <FormLabel>Kích cỡ</FormLabel>
                   <Select disabled={loading} onValueChange={field.onChange} value={field.value} defaultValue={field.value}>
                     <FormControl>
                       <SelectTrigger>
-                        <SelectValue defaultValue={field.value} placeholder="Select a size" />
+                        <SelectValue defaultValue={field.value} placeholder="Chọn kích cỡ" />
                       </SelectTrigger>
                     </FormControl>
                     <SelectContent>
@@ -237,11 +237,11 @@ export const ProductForm: React.FC<ProductFormProps> = ({
               name="colorId"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Color</FormLabel>
+                  <FormLabel>Màu sắc</FormLabel>
                   <Select disabled={loading} onValueChange={field.onChange} value={field.value} defaultValue={field.value}>
                     <FormControl>
                       <SelectTrigger>
-                        <SelectValue defaultValue={field.value} placeholder="Select a color" />
+                        <SelectValue defaultValue={field.value} placeholder="Chọn màu" />
                       </SelectTrigger>
                     </FormControl>
                     <SelectContent>
@@ -268,10 +268,10 @@ export const ProductForm: React.FC<ProductFormProps> = ({
                   </FormControl>
                   <div className="space-y-1 leading-none">
                     <FormLabel>
-                      Featured
+                      Sản phẩm đặc sắc
                     </FormLabel>
                     <FormDescription>
-                      This product will appear on the home page
+                      Sản phẩm này sẽ xuất hiện trên trang chủ.
                     </FormDescription>
                   </div>
                 </FormItem>
@@ -291,10 +291,10 @@ export const ProductForm: React.FC<ProductFormProps> = ({
                   </FormControl>
                   <div className="space-y-1 leading-none">
                     <FormLabel>
-                      Archived
+                      Sản phẩm lưu trữ
                     </FormLabel>
                     <FormDescription>
-                      This product will not appear anywhere in the store.
+                      Sản phẩm này sẽ không xuất hiện ở bất cứ đâu trong cửa hàng.
                     </FormDescription>
                   </div>
                 </FormItem>

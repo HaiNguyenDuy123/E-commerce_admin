@@ -20,18 +20,18 @@ export const ColorClient: React.FC<ColorClientProps> = ({
 }) => {
   const params = useParams();
   const router = useRouter();
-
+  
   return (
     <>
       <div className="flex items-center justify-between">
-        <Heading title={`Colors (${data.length})`} description="Manage colors for your products" />
+        <Heading title={`Màu sắc (${data.length})`} description="Quản lý màu sắc cho sản phẩm của bạn" />
         <Button onClick={() => router.push(`/${params.storeId}/colors/new`)}>
-          <Plus className="mr-2 h-4 w-4" /> Add New
+          <Plus className="mr-2 h-4 w-4" /> Thêm màu sắc
         </Button>
       </div>
       <Separator />
       <DataTable searchKey="name" columns={columns} data={data} />
-      <Heading title="API" description="API Calls for Colors" />
+      <Heading title="API" description="API của màu sắc" />
       <Separator />
       <ApiList entityName="colors" entityIdName="colorId" />
     </>

@@ -14,15 +14,15 @@ export type SizeColumn = {
 export const columns: ColumnDef<SizeColumn>[] = [
   {
     accessorKey: "name",
-    header: "Name",
+    header: "Tên",
   },
   {
     accessorKey: "value",
-    header: "Value",
+    header: "Kích cỡ",
   },
   {
     accessorKey: "createdAt",
-    header: "Date",
+    header: "Thời gian đăng kí",
   },
   {
     id: "actions",

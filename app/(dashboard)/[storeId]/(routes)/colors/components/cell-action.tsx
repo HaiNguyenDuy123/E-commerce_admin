@@ -34,10 +34,10 @@ export const CellAction: React.FC<CellActionProps> = ({
     try {
       setLoading(true);
       await axios.delete(`/api/${params.storeId}/colors/${data.id}`);
-      toast.success('Color deleted.');
+      toast.success('Đã xóa màu.');
       router.refresh();
     } catch (error) {
-      toast.error('Make sure you removed all products using this color first.');
+      toast.error('Hãy đảm bảo rằng bạn đã loại bỏ tất cả các sản phẩm sử dụng màu này trước tiên.');
     } finally {
       setOpen(false);
       setLoading(false);
@@ -46,7 +46,7 @@ export const CellAction: React.FC<CellActionProps> = ({
 
   const onCopy = (id: string) => {
     navigator.clipboard.writeText(id);
-    toast.success('Color ID copied to clipboard.');
+    toast.success('Đã sao chép ID màu vào bảng nhớ tạm.');
   }
 
   return (
@@ -60,26 +60,26 @@ export const CellAction: React.FC<CellActionProps> = ({
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
           <Button variant="ghost" className="h-8 w-8 p-0">
-            <span className="sr-only">Open menu</span>
+            <span className="sr-only">Mở menu</span>
             <MoreHorizontal className="h-4 w-4" />
           </Button>
         </DropdownMenuTrigger>
         <DropdownMenuContent align="end">
-          <DropdownMenuLabel>Actions</DropdownMenuLabel>
+          <DropdownMenuLabel>Lựa chọn</DropdownMenuLabel>
           <DropdownMenuItem
             onClick={() => onCopy(data.id)}
           >
-            <Copy className="mr-2 h-4 w-4" /> Copy Id
+            <Copy className="mr-2 h-4 w-4" /> Sao chép Id
           </DropdownMenuItem>
           <DropdownMenuItem
             onClick={() => router.push(`/${params.storeId}/colors/${data.id}`)}
           >
-            <Edit className="mr-2 h-4 w-4" /> Update
+            <Edit className="mr-2 h-4 w-4" /> Cập nhập
           </DropdownMenuItem>
           <DropdownMenuItem
             onClick={() => setOpen(true)}
           >
-            <Trash className="mr-2 h-4 w-4" /> Delete
+            <Trash className="mr-2 h-4 w-4" /> Xóa
           </DropdownMenuItem>
         </DropdownMenuContent>
       </DropdownMenu>
