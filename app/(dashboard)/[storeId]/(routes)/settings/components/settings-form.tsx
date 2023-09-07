@@ -88,7 +88,7 @@ export const SettingsForm: React.FC<SettingsFormProps> = ({
       loading={loading}
     />
      <div className="flex items-center justify-between">
-        <Heading title="Cài đặt cửa hàng" description="Quản lý tùy chọn cửa hàng" />
+        <Heading title="Cài đặt" description="Quản lý tùy chọn cửa hàng" />
         <Button
           disabled={loading}
           variant="destructive"
@@ -107,7 +107,7 @@ export const SettingsForm: React.FC<SettingsFormProps> = ({
               name="name"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Name</FormLabel>
+                  <FormLabel>Tên cửa hàng</FormLabel>
                   <FormControl>
                     <Input disabled={loading} placeholder="Tên cửa hàng" {...field} />
                   </FormControl>
@@ -117,13 +117,13 @@ export const SettingsForm: React.FC<SettingsFormProps> = ({
             />
           </div>
           <Button disabled={loading} className="ml-auto" type="submit">
-            Lưu
+            Lưu thay đổi
           </Button>
         </form>
       </Form>
       <Separator />
       <ApiAlert 
-        title="NEXT_PUBLIC_API_URL" 
+        title="NEXT PUBLIC API URL" 
         variant="public" 
         description={`${origin}/api/${params.storeId}`}
       />

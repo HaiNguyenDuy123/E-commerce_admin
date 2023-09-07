@@ -38,10 +38,10 @@ export const BillboardForm: React.FC<BillboardFormProps> = ({
   const [open, setOpen] = useState(false);
   const [loading, setLoading] = useState(false);
 
-  const title = initialData ? 'Edit billboard' : 'Create billboard';
-  const description = initialData ? 'Edit a billboard.' : 'Add a new billboard';
-  const toastMessage = initialData ? 'Billboard updated.' : 'Billboard created.';
-  const action = initialData ? 'Save changes' : 'Create';
+  const title = initialData ? 'Chỉnh sửa bảng quảng cáo' : 'Tạo bảng quảng cáo';
+  const description = initialData ? 'Chỉnh sửa bảng quảng cáo.' : 'Thêm biển quảng cáo mới';
+  const toastMessage = initialData ? 'Cập nhập bảng quảng cáo.' : 'Đã tạo bảng quảng cáo.';
+  const action = initialData ? 'Lưu thay đổi' : 'Tạo';
 
   const form = useForm<BillboardFormValues>({
     resolver: zodResolver(formSchema),
@@ -75,7 +75,7 @@ export const BillboardForm: React.FC<BillboardFormProps> = ({
       await axios.delete(`/api/${params.storeId}/billboards/${params.billboardId}`);
       router.refresh();
       router.push(`/${params.storeId}/billboards`);
-      toast.success('Bảng quảng cáo đã bị xóa.');
+      toast.success('Bảng quảng cáo đã xóa.');
     } catch (error: any) {
       toast.error('Trước tiên, hãy đảm bảo bạn đã xóa tất cả các danh mục bằng bảng quảng cáo này.');
     } finally {

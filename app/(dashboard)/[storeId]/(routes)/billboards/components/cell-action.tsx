@@ -34,7 +34,7 @@ export const CellAction: React.FC<CellActionProps> = ({
     try {
       setLoading(true);
       await axios.delete(`/api/${params.storeId}/billboards/${data.id}`);
-      toast.success('Biển quảng cáo đã bị xóa.');
+      toast.success('Bảng quảng cáo đã bị xóa.');
       router.refresh();
     } catch (error) {
       toast.error('Trước tiên, hãy đảm bảo bạn đã xóa tất cả các danh mục bằng bảng quảng cáo này.');
@@ -46,7 +46,7 @@ export const CellAction: React.FC<CellActionProps> = ({
 
   const onCopy = (id: string) => {
     navigator.clipboard.writeText(id);
-    toast.success('ID biển quảng cáo đã được sao chép vào bảng nhớ tạm.');
+    toast.success('ID bảng quảng cáo đã được sao chép vào bảng nhớ tạm.');
   }
 
   return (
@@ -65,7 +65,7 @@ export const CellAction: React.FC<CellActionProps> = ({
           </Button>
         </DropdownMenuTrigger>
         <DropdownMenuContent align="end">
-          <DropdownMenuLabel>Actions</DropdownMenuLabel>
+          <DropdownMenuLabel>Lựa chọn</DropdownMenuLabel>
           <DropdownMenuItem
             onClick={() => onCopy(data.id)}
           >

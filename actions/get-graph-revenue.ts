@@ -24,7 +24,7 @@ export const getGraphRevenue = async (storeId: string): Promise<GraphData[]> => 
 
   // Grouping the orders by month and summing the revenue
   for (const order of paidOrders) {
-    const month = order.createdAt.getMonth(); // 0 for Jan, 1 for Feb, ...
+    const month = order.createdAt.getMonth(); // 0 cho tháng 1, 1 for tháng 2, ...
     let revenueForOrder = 0;
 
     for (const item of order.orderItems) {
@@ -37,18 +37,18 @@ export const getGraphRevenue = async (storeId: string): Promise<GraphData[]> => 
 
   // Converting the grouped data into the format expected by the graph
   const graphData: GraphData[] = [
-    { name: "Jan", total: 0 },
-    { name: "Feb", total: 0 },
-    { name: "Mar", total: 0 },
-    { name: "Apr", total: 0 },
-    { name: "May", total: 0 },
-    { name: "Jun", total: 0 },
-    { name: "Jul", total: 0 },
-    { name: "Aug", total: 0 },
-    { name: "Sep", total: 0 },
-    { name: "Oct", total: 0 },
-    { name: "Nov", total: 0 },
-    { name: "Dec", total: 0 },
+    { name: "Tháng 1", total: 0 },
+    { name: "Tháng 2", total: 0 },
+    { name: "Tháng 3", total: 0 },
+    { name: "Tháng 4", total: 0 },
+    { name: "Tháng 5", total: 0 },
+    { name: "Tháng 6", total: 0 },
+    { name: "Tháng 7", total: 0 },
+    { name: "Tháng 8", total: 0 },
+    { name: "Tháng 9", total: 0 },
+    { name: "Tháng 10", total: 0 },
+    { name: "Tháng 11", total: 0 },
+    { name: "Tháng 12", total: 0 },
   ];
 
   // Filling in the revenue data
